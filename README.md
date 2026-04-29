@@ -5,6 +5,10 @@ A production-ready full-stack portfolio built with **React + Vite** (frontend) a
 ---
 
 
+
+https://github.com/user-attachments/assets/dac9d06d-ec5f-4b71-a624-d52115d1f957
+
+
 ### 1. Install dependencies
 
 ```bash
