@@ -1,0 +1,148 @@
+/* =========================================
+   CSS CUSTOM PROPERTIES — DESIGN TOKENS
+========================================= */
+:root {
+  --primary:      #9E7C81;
+  --light-accent: #D8C6CB;
+  --secondary:    #7D616C;
+  --dark-accent:  #735D69;
+  --deep:         #442F36;
+  --deeper:       #2C1E22;
+  --text:         #FFFFFF;
+  --text-muted:   rgba(255,255,255,0.6);
+  --text-faint:   rgba(255,255,255,0.3);
+
+  --font-display: 'Cormorant Garamond', serif;
+  --font-body:    'DM Sans', sans-serif;
+  --font-mono:    'DM Mono', monospace;
+
+  --radius-sm:  8px;
+  --radius-md:  16px;
+  --radius-lg:  28px;
+
+  --transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  --shadow-card: 0 8px 40px rgba(68,47,54,0.45);
+  --shadow-glow: 0 0 60px rgba(158,124,129,0.25);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: var(--font-body);
+  color: var(--text);
+  background: var(--deeper);
+  overflow-x: hidden;
+  cursor: none;
+}
+
+/* =========================================
+   PAGE SYSTEM
+========================================= */
+.page { min-height: 100vh; position: relative; overflow: hidden; }
+
+/* =========================================
+   SECTION WRAPPER + TYPOGRAPHY
+========================================= */
+.section-wrap {
+  max-width: 1140px; margin: 0 auto;
+  padding: 130px 40px 90px;
+}
+.section-label {
+  font-family: var(--font-mono); font-size: 0.68rem;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--primary); margin-bottom: 14px;
+  display: flex; align-items: center; gap: 12px;
+}
+.section-label::before {
+  content: ''; width: 28px; height: 1px;
+  background: var(--primary); display: inline-block;
+}
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 5vw, 3.8rem);
+  font-weight: 300; line-height: 1.08;
+  letter-spacing: -0.01em; color: #fff;
+}
+.section-title em { font-style: italic; color: var(--light-accent); }
+
+/* =========================================
+   BUTTONS
+========================================= */
+.btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 14px 32px; border-radius: 100px;
+  font-family: var(--font-body); font-size: 0.8rem;
+  font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
+  text-decoration: none; border: none; cursor: pointer;
+  transition: transform var(--transition), box-shadow var(--transition), background var(--transition);
+  position: relative; overflow: hidden;
+}
+.btn::after {
+  content: ''; position: absolute; inset: 0;
+  background: rgba(255,255,255,0.08); opacity: 0;
+  transition: opacity var(--transition);
+}
+.btn:hover::after { opacity: 1; }
+.btn:hover { transform: translateY(-2px); }
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary), var(--dark-accent));
+  color: #fff; box-shadow: 0 8px 28px rgba(158,124,129,0.35);
+}
+.btn-primary:hover { box-shadow: 0 14px 40px rgba(158,124,129,0.5); }
+.btn-outline {
+  background: transparent; color: var(--light-accent);
+  border: 1px solid rgba(216,198,203,0.3);
+}
+.btn-outline:hover { border-color: var(--light-accent); color: #fff; }
+
+/* =========================================
+   SCROLL REVEAL
+========================================= */
+.reveal {
+  opacity: 0; transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* =========================================
+   PAGE TRANSITIONS
+========================================= */
+.page-transition {
+  position: fixed; inset: 0; z-index: 9000;
+  background: linear-gradient(135deg, var(--deep), var(--deeper));
+  transform: translateY(100%); pointer-events: none;
+}
+.page-transition.entering {
+  animation: slideIn 0.48s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+}
+.page-transition.exiting {
+  animation: slideOut 0.48s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+}
+@keyframes slideIn { from { transform: translateY(100%); } to { transform: translateY(0%); } }
+@keyframes slideOut { from { transform: translateY(0%); } to { transform: translateY(-100%); } }
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================================
+   FOOTER
+========================================= */
+footer {
+  padding: 38px 40px; text-align: center;
+  font-family: var(--font-mono); font-size: 0.62rem;
+  letter-spacing: 0.14em; color: var(--text-faint);
+  border-top: 1px solid rgba(158,124,129,0.07);
+  position: relative; z-index: 1;
+}
+footer a {
+  color: var(--primary); text-decoration: none; cursor: pointer;
+}
+footer a:hover { color: var(--light-accent); }
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+@media (max-width: 900px) {
+  .section-wrap { padding: 110px 24px 70px; }
+}

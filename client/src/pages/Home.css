@@ -1,0 +1,122 @@
+#page-home {
+  background:
+    radial-gradient(ellipse 80% 70% at 50% -5%, rgba(158,124,129,0.32) 0%, transparent 55%),
+    radial-gradient(ellipse 55% 55% at 85% 85%, rgba(115,93,105,0.18) 0%, transparent 50%),
+    linear-gradient(165deg, var(--deeper) 0%, #351820 55%, var(--deep) 100%);
+}
+
+#page-home::after {
+  content: '';
+  position: absolute; inset: 0; z-index: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  pointer-events: none; opacity: 0.7;
+}
+
+.home-wrap {
+  position: relative; z-index: 1;
+  max-width: 1140px; margin: 0 auto;
+  padding: 0 40px; min-height: 100vh;
+  display: flex; flex-direction: column; justify-content: center;
+  padding-top: 90px;
+}
+
+.home-greeting {
+  font-family: var(--font-mono); font-size: 0.72rem;
+  letter-spacing: 0.24em; text-transform: uppercase;
+  color: var(--primary); margin-bottom: 22px;
+  display: flex; align-items: center; gap: 14px;
+  animation: fadeSlideUp 0.8s ease both;
+}
+.home-greeting::before {
+  content: ''; width: 36px; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--primary));
+}
+
+.home-name {
+  font-family: var(--font-display);
+  font-size: clamp(3.8rem, 9.5vw, 8.5rem);
+  font-weight: 300; line-height: 0.9;
+  letter-spacing: -0.03em; color: #fff;
+  animation: fadeSlideUp 0.9s 0.08s ease both;
+}
+.home-name .italic {
+  font-style: italic; color: var(--light-accent); display: block;
+}
+
+.home-tagline {
+  margin-top: 30px; font-size: 0.98rem;
+  color: var(--text-muted); max-width: 460px;
+  line-height: 1.75; font-weight: 300;
+  animation: fadeSlideUp 1s 0.18s ease both;
+}
+
+.home-cta {
+  margin-top: 46px; display: flex; gap: 14px; flex-wrap: wrap;
+  animation: fadeSlideUp 1.1s 0.26s ease both;
+}
+
+.home-social {
+  margin-top: 72px; display: flex; align-items: center; gap: 22px;
+  animation: fadeSlideUp 1.2s 0.36s ease both;
+}
+.home-social-label {
+  font-family: var(--font-mono); font-size: 0.62rem;
+  letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-faint);
+}
+.social-links { display: flex; gap: 12px; }
+.social-link {
+  width: 38px; height: 38px; border-radius: 50%;
+  border: 1px solid rgba(158,124,129,0.22);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--text-muted); text-decoration: none; font-size: 0.82rem;
+  transition: var(--transition); cursor: pointer;
+}
+.social-link:hover {
+  border-color: var(--primary); color: #fff;
+  background: rgba(158,124,129,0.14); transform: translateY(-3px);
+}
+
+.home-badge {
+  position: absolute; right: 80px; top: 50%;
+  transform: translateY(-50%);
+  width: 155px; height: 155px;
+  animation: rotateBadge 22s linear infinite, fadeSlideUp 1s 0.5s ease both;
+  display: flex; align-items: center; justify-content: center;
+}
+.home-badge-center {
+  position: absolute;
+  width: 80px; height: 80px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(158,124,129,0.25), rgba(68,47,54,0.5));
+  border: 1px solid rgba(158,124,129,0.28);
+}
+@keyframes rotateBadge {
+  from { transform: translateY(-50%) rotate(0deg); }
+  to   { transform: translateY(-50%) rotate(360deg); }
+}
+
+.scroll-indicator {
+  position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  animation: fadeSlideUp 1.3s 0.7s ease both;
+}
+.scroll-indicator span {
+  font-family: var(--font-mono); font-size: 0.58rem;
+  letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-faint);
+}
+.scroll-line {
+  width: 1px; height: 48px;
+  background: linear-gradient(to bottom, var(--primary), transparent);
+  animation: scrollPulse 2.2s ease infinite;
+}
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.35; transform: scaleY(1); }
+  50% { opacity: 1; transform: scaleY(1.25); }
+}
+
+@media (max-width: 900px) {
+  .home-wrap { padding: 90px 24px 60px; }
+  .home-badge { display: none; }
+}
+@media (max-width: 600px) {
+  .home-name { font-size: clamp(3rem, 13vw, 5rem); }
+}

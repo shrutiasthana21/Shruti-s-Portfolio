@@ -1,0 +1,65 @@
+#page-achievements {
+  background:
+    radial-gradient(ellipse 75% 55% at 50% -8%, rgba(158,124,129,0.18) 0%, transparent 50%),
+    linear-gradient(170deg, #2a1520 0%, var(--deeper) 50%, #18080f 100%);
+}
+#page-achievements::before {
+  content: ''; position: fixed; left: 50%; top: 0;
+  width: 1px; height: 100%;
+  background: linear-gradient(to bottom, transparent, rgba(158,124,129,0.1), transparent);
+  pointer-events: none; z-index: 0;
+}
+
+.achievements-layout {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 22px; margin-top: 60px; position: relative; z-index: 1;
+}
+
+.achievement-card {
+  padding: 34px; border-radius: var(--radius-lg);
+  background: rgba(255,255,255,0.018);
+  border: 1px solid rgba(158,124,129,0.09);
+  position: relative; overflow: hidden; transition: var(--transition);
+}
+.achievement-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(158,124,129,0.45), transparent);
+}
+.achievement-card:hover {
+  border-color: rgba(158,124,129,0.24); transform: translateY(-4px);
+  box-shadow: var(--shadow-card);
+}
+
+.achievement-icon {
+  width: 50px; height: 50px; border-radius: var(--radius-md);
+  background: linear-gradient(135deg, rgba(158,124,129,0.18), rgba(68,47,54,0.4));
+  border: 1px solid rgba(158,124,129,0.18);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.3rem; margin-bottom: 18px;
+}
+.achievement-year {
+  font-family: var(--font-mono); font-size: 0.62rem;
+  letter-spacing: 0.2em; color: var(--primary); text-transform: uppercase; margin-bottom: 7px;
+}
+.achievement-title {
+  font-family: var(--font-display); font-size: 1.35rem;
+  font-weight: 400; color: #fff; margin-bottom: 9px; line-height: 1.2;
+}
+.achievement-desc {
+  font-size: 0.83rem; color: var(--text-muted); line-height: 1.72; font-weight: 300;
+}
+
+.achievement-card.highlight {
+  grid-column: 1 / -1;
+  background: linear-gradient(135deg, rgba(158,124,129,0.09), rgba(68,47,54,0.18));
+  border-color: rgba(158,124,129,0.22);
+}
+.achievement-card.highlight .achievement-icon {
+  background: linear-gradient(135deg, rgba(158,124,129,0.32), rgba(115,93,105,0.38));
+}
+
+@media (max-width: 900px) {
+  .achievements-layout { grid-template-columns: 1fr; }
+  .achievement-card.highlight { grid-column: 1; }
+}
