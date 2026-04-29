@@ -43,15 +43,4 @@ npm run build          # Builds client to client/dist/
 cd server && npm start # Starts the Express server
 ```
 
----
 
-
-   SMTP_PASS=your_16_char_app_password
-   ```
-
----
-
-## Tech Stack
-
-**Frontend:** React 18, Vite, Axios, CSS Custom Properties, Google Fonts  
-**Backend:** Node.js, Express, Mongoose (MongoDB), Nodemailer, express-validator, express-rate-limit
